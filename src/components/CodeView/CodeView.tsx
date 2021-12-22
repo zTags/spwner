@@ -11,6 +11,7 @@ interface IState {
 	editing: string;
 	file: string;
 	contents: string;
+	cursor: string;
 }
 
 export default class CodeView extends React.Component<IProps, IState> {
@@ -18,9 +19,11 @@ export default class CodeView extends React.Component<IProps, IState> {
 		super(props);
 		this.state = {
 			editing: props.editing,
-			file: props.file,
+			file: "BUFFER",
 			contents: "$.print(\"Hello World!\");",
+			cursor: "animated-cursor",
 		};
+		document.title =  "SPWNer - " + this.props.file;
 		this.keyDown = this.keyDown.bind(this);
 	}
 
@@ -28,18 +31,22 @@ export default class CodeView extends React.Component<IProps, IState> {
 		if (e.key.toString() === "Backspace") {
 			this.setState((state) => ({
 				contents: state.contents?.substring(0, state.contents.length-1),
+				cursor: "static-cursor",
 			}));
 		} else if (e.key.toString() === "Enter") {
 			this.setState((state) => ({
 				contents: state.contents + "\n",
+				cursor: "static-cursor",
 			}));
-		} else if (e.key.toString() === "Shift" || e.key.toString() ===  "Control" || e.key.toString() === "Meta") {
+		} else if (e.key.toString() === "Shift" || e.key.toString() ===  "Control" || e.key.toString() === "Meta"|| e.key.toString() === "Alt") { // ugly ikik
 			this.setState((state) => ({
 				contents: state.contents,
+				cursor: "static-cursor",
 			}));
 		} else {
 			this.setState((state) => ({
 				contents: state.contents + e.key.toString(),
+				cursor: "static-cursor",
 			}));
 		}
 	}
@@ -62,6 +69,7 @@ export default class CodeView extends React.Component<IProps, IState> {
 				<div className="code-input" onKeyDown={this.keyDown}>
 					<p tabIndex={0}>
 						{this.state.contents}
+						<span className={this.state.cursor}>|</span>
 					</p>
 				</div>
         	</div>

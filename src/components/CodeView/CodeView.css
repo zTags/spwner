@@ -21,5 +21,33 @@ h2.bottom-redef-text {
 div.code-input {
   color: #DDDDDD;
   font-family: "Lucida Console", Courier, monospace;
+  font-size: 11pt;
   white-space: pre-wrap;
+}
+
+@keyframes fade-in-out {
+  0%   { opacity: 0%; }
+  50%  { opacity: 100%; }
+  100% { opacity: 0%; }
+}
+
+@keyframes static-then-fade {
+  0%   { opacity: 100%; }
+  100% { animation-name: fade-in-out; }
+}
+
+span.animated-cursor {
+  font-family: "Lucida Console", Courier, monospace;
+  font-size: 12pt;
+  animation-name: fade-in-out;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+span.static-cursor {
+  font-family: "Lucida Console", Courier, monospace;
+  font-size: 12pt;
+  animation-name: static-then-fade;
+  animation-duration: 0.25s;
+  animation-iteration-count: 0;
 }
