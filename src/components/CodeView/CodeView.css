@@ -17,3 +17,9 @@ h2.bottom-redef-text {
   left: 10%;
   transform: translateX(-40%);
 }
+
+div.code-input {
+  color: #DDDDDD;
+  font-family: "Lucida Console", Courier, monospace;
+  white-space: pre-wrap;
+}
