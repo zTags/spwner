@@ -1,0 +1,19 @@
+h1.top-spwn-text {
+  font-family: Helvetica, Arial, sans-serif;
+  color: #EEEEEE;
+  margin: 0;
+  position: absolute;
+  top: 30%;
+  left: 10%;
+  transform: translateX(-30%);
+}
+
+h2.bottom-redef-text {
+  font-family: Helvetica, Arial, sans-serif;
+  color: #DDDDDD;
+  margin: 0;
+  position: absolute;
+  top: 40%;
+  left: 10%;
+  transform: translateX(-40%);
+}
